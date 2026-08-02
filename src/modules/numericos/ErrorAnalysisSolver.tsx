@@ -56,7 +56,7 @@ export const ErrorAnalysisSolver: React.FC = () => {
           <div className="text-xl font-bold font-mono text-amber-400">
             {result.absError.toExponential(4)}
           </div>
-          <span className="text-[10px] text-slate-500 block">$E_a = |x - \tilde{x}|$</span>
+          <span className="text-[10px] text-slate-500 block">{"$E_a = |x - \\tilde{x}|$"}</span>
         </div>
 
         <div className="glass-panel p-5 rounded-2xl border border-slate-800 space-y-1">
@@ -64,7 +64,7 @@ export const ErrorAnalysisSolver: React.FC = () => {
           <div className="text-xl font-bold font-mono text-cyan-400">
             {result.relError.toExponential(4)}
           </div>
-          <span className="text-[10px] text-slate-500 block">$E_r = \frac{|x - \tilde{x}|}{|x|}$</span>
+          <span className="text-[10px] text-slate-500 block">{"$E_r = \\frac{|x - \\tilde{x}|}{|x|}$"}</span>
         </div>
 
         <div className="glass-panel p-5 rounded-2xl border border-slate-800 space-y-1">

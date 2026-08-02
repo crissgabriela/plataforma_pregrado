@@ -254,6 +254,35 @@ export function solveLinearRegression(points: InterpolationPoint[]): LinearRegre
   };
 }
 
+export function solveLagrange(points: InterpolationPoint[]): InterpolationResult {
+  const n = points.length;
+  if (n === 0) return { polynomialString: 'P(x) = 0', points };
+  let polyTerms: string[] = [];
+
+  for (let i = 0; i < n; i++) {
+    const xi = points[i].x;
+    const yi = points[i].y;
+    let numTerms: string[] = [];
+    let denVal = 1;
+
+    for (let j = 0; j < n; j++) {
+      if (i !== j) {
+        const xj = points[j].x;
+        numTerms.push(`(x - ${xj})`);
+        denVal *= (xi - xj);
+      }
+    }
+
+    const coeff = denVal !== 0 ? (yi / denVal).toFixed(3) : '0';
+    polyTerms.push(`${coeff}${numTerms.length > 0 ? '*' + numTerms.join('') : ''}`);
+  }
+
+  return {
+    polynomialString: polyTerms.join(' + '),
+    points
+  };
+}
+
 /**
  * 5. MN 05: Integración Numérica (Trapecio y Simpson)
  */
